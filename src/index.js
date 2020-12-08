@@ -6,7 +6,7 @@ import LegacyApp from './LegacyApp';
 import DebounceApp from './DebounceApp';
 import reportWebVitals from './reportWebVitals';
 
-const mode = 'concurrent';  // concurrent | debounce | legacy
+const mode = 'legacy';  // concurrent | debounce | legacy
 if (mode === 'concurrent') {
     ReactDOM.unstable_createRoot(document.getElementById("root")).render(<App />)
 } else if(mode === 'debounce'){

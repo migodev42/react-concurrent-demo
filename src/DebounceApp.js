@@ -1,26 +1,33 @@
 import logo from './logo.svg';
 import './App.css';
-import { useState, unstable_useDeferredValue } from 'react';
+import { useState, useCallback, unstable_useDeferredValue } from 'react';
 import { unstable_scheduleCallback } from "scheduler";
 import Clock from "./Clock";
 import SlowList from './SlowList';
+// import {debounce} from 'lodash'
+import { useDebounce } from 'react-use'
 
 function App() {
     const [value, setValue] = useState('');
-    const onChange = e => {
+    const [debounceValue, setDebounceValue] = useState('');
+
+    useDebounce(() => {
+        setDebounceValue(value)
+    }, 500, [value])
+
+    const onChange = (e) => {
         setValue(e.target.value)
     }
-    
-    const deferredValue = unstable_useDeferredValue(value, { timeoutMs: 500 });
+
     return (
         <div className="App">
             <header className="App-header">
-                <h1>React With Concurrent Mode</h1>
+                <h1>React With Debounce</h1>
                 <input type="text" onChange={onChange} value={value} />
 
                 <Clock />
 
-                <SlowList text={deferredValue}/>
+                <SlowList text={debounceValue} />
             </header>
         </div>
     );

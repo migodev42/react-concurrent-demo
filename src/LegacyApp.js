@@ -10,17 +10,15 @@ function App() {
     const onChange = e => {
         setValue(e.target.value)
     }
-    
-    const deferredValue = unstable_useDeferredValue(value, { timeoutMs: 500 });
     return (
         <div className="App">
             <header className="App-header">
-                <h1>React With Concurrent Mode</h1>
+                {/* <img src={logo} className="App-logo" alt="logo" /> */}
+                <h1>React Without Concurrent Mode</h1>
                 <input type="text" onChange={onChange} value={value} />
-
                 <Clock />
 
-                <SlowList text={deferredValue}/>
+                <SlowList text={value}/>
             </header>
         </div>
     );

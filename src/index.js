@@ -6,10 +6,11 @@ import LegacyApp from './LegacyApp';
 import DebounceApp from './DebounceApp';
 import reportWebVitals from './reportWebVitals';
 
-const mode = 'legacy';  // concurrent | debounce | legacy
-if (mode === 'concurrent') {
+console.log(window.location.pathname)
+const mode = 'concurrent';  // concurrent | debounce | legacy
+if (window.location.pathname === '/concurrent') {
     ReactDOM.unstable_createRoot(document.getElementById("root")).render(<App />)
-} else if(mode === 'debounce'){
+} else if(window.location.pathname  === '/debounce'){
     ReactDOM.render(
         <DebounceApp />,
         document.getElementById('root')
